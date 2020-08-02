@@ -11,6 +11,10 @@ public class MCController : MonoBehaviour
     [SerializeField]
     Canvas gameoverMenu = null;
 
+    public enum MovementState { normalWalk, moonWalk, spinWalk, bounceWalk}
+    [SerializeField]
+    MovementState state = MovementState.normalWalk;
+
     [SerializeField]
     float maxSpeed = 0.25f;
     [SerializeField]
@@ -31,10 +35,18 @@ public class MCController : MonoBehaviour
     float deathTime = 2f;
     float currentTime;
 
+    bool jump = false;
+
     public void Kill()
     {
         dead = true;
         currentTime = 0;
+        animator.SetTrigger("Killed");
+    }
+    public void Jump()
+    {
+        animator.SetTrigger("Jumped");
+        jump = true;
     }
     private void Start()
     {
@@ -45,12 +57,22 @@ public class MCController : MonoBehaviour
     }
     private void Update()
     {
+        if (!controller.isGrounded){
+            desiredVel.y -= gravity * Time.deltaTime;
+        }
+        else
+        {
+            desiredVel.y = -0.05f;
+        }
         if (!dead)
         {
-            UpdateInputs();
             if(transform.position.y < -5)
             {
                 Kill();
+            }
+            else
+            {
+                UpdateInputs();
             }
         }
         else
@@ -60,17 +82,20 @@ public class MCController : MonoBehaviour
             {
                 gameoverMenu.gameObject.SetActive(true);
             }
-            desiredVel.y = -0.05f;
             if (controller.isGrounded)
             {
                 desiredVel.x *= 0.95f;
             }
         }
-        if (!controller.isGrounded){
-            desiredVel.y -= gravity * Time.deltaTime;
+        if (jump)
+        {
+            jump = false;
+            desiredVel.y = jumpSpeed;
         }
         animator.SetBool("IsDead", dead);
         animator.SetBool("IsGrounded", controller.isGrounded);
+        animator.SetBool("FacingRight", controller.velocity.x >= 0);
+        animator.SetFloat("State", (float)state);
         animator.SetFloat("SpeedH", Mathf.Abs(desiredVel.x));
         controller.Move(desiredVel);
         animator.SetFloat("VelocityV", controller.velocity.y);
@@ -127,16 +152,11 @@ public class MCController : MonoBehaviour
             desiredVel.x -= acceleration * Time.deltaTime;
         }
         desiredVel.x = Mathf.Clamp(desiredVel.x, -maxSpeed, maxSpeed);
-        if (h != 0)
-        {
-            transform.right = Vector3.right * Mathf.Sign(h);
-        }
         if (controller.isGrounded)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                desiredVel.y = jumpSpeed;
-                animator.SetTrigger("Jumped");
+                Jump();
             }
             else
             {
