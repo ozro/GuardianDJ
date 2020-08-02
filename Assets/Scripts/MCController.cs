@@ -11,9 +11,9 @@ public class MCController : MonoBehaviour
     [SerializeField]
     Canvas gameoverMenu = null;
 
-    public enum MovementState { normalWalk, moonWalk, spinWalk, bounceWalk}
+    public enum MovementState { normalWalk, moonWalk, spinWalk, bounceWalk, crouchWalk}
     [SerializeField]
-    MovementState state = MovementState.normalWalk;
+    public MovementState state = MovementState.normalWalk;
 
     [SerializeField]
     float maxSpeed = 0.25f;
@@ -39,9 +39,12 @@ public class MCController : MonoBehaviour
 
     public void Kill()
     {
-        dead = true;
-        currentTime = 0;
-        animator.SetTrigger("Killed");
+        if (dead != true)
+        {
+            currentTime = 0;
+            animator.SetTrigger("Killed");
+            dead = true;
+        }
     }
     public void Jump()
     {
@@ -116,6 +119,26 @@ public class MCController : MonoBehaviour
         {
             Kill();
         }
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            state = MovementState.normalWalk;
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            state = MovementState.moonWalk;
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            state = MovementState.spinWalk;
+        }
+        if (Input.GetKey(KeyCode.Alpha4))
+        {
+            state = MovementState.bounceWalk;
+        }
+        if (Input.GetKey(KeyCode.Alpha5))
+        {
+            state = MovementState.crouchWalk;
+        }
 
         if(h==0) 
         {
@@ -157,10 +180,6 @@ public class MCController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Jump();
-            }
-            else
-            {
-                desiredVel.y = -0.05f;
             }
         }
     }
