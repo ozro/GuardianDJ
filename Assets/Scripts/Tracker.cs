@@ -7,7 +7,17 @@ public class Tracker : MonoBehaviour
     [SerializeField]
     CharacterController target = null;
     [SerializeField]
-    float trackDelay;
+    float trackDelay = 0.5f;
+    [SerializeField]
+    float verticalOffset = 0;
+    [SerializeField]
+    float windowTop = 3;
+    [SerializeField]
+    float windowBot = 0;
+    [SerializeField]
+    float windowLeft = 1;
+    [SerializeField]
+    float windowRight = 0;
 
     Vector3 trackVel;
 
@@ -18,10 +28,40 @@ public class Tracker : MonoBehaviour
         separation = transform.position.z;
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position+ new Vector3((windowRight-windowLeft)/2, (windowTop - windowBot)/2-verticalOffset, 0), new Vector3(windowLeft+windowRight, windowBot + windowTop, 10));
+    }
+
     // Update is called once per frame
     void LateUpdate()
     {
-        Vector3 pos = target.transform.position;
+        Vector3 offset = target.transform.position - (transform.position - Vector3.up*verticalOffset);
+        if(offset.x > windowRight)
+        {
+            offset.x -= windowRight;
+        }
+        else if (offset.x < -windowLeft)
+        {
+            offset.x += windowLeft;
+        }
+        else
+        {
+            offset.x = 0;
+        }
+        if(offset.y > windowTop)
+        {
+            offset.y -= windowTop;
+        }
+        else if (offset.y < -windowBot)
+        {
+            offset.y += windowBot;
+        }
+        else
+        {
+            offset.y = 0;
+        }
+        Vector3 pos = transform.position + offset;
         pos.z = separation;
         transform.position = pos;
     }

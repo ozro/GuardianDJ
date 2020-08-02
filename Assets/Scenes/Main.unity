@@ -1359,6 +1359,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1729007457}
   trackDelay: 0.1
+  verticalOffset: 3.5
+  windowTop: 4
+  windowBot: 0
+  windowLeft: 1
+  windowRight: 0
 --- !u!20 &1687258584
 Camera:
   m_ObjectHideFlags: 0
@@ -1410,7 +1415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 3.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1480,7 +1485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameoverMenu: {fileID: 831179008}
   state: 0
-  maxSpeed: 0.1
+  maxSpeed: 0.035
   acceleration: 0.25
   deceleration: 1
   jumpSpeed: 0.3
@@ -1885,10 +1890,15 @@ PrefabInstance:
       propertyPath: safeState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5484346157061026278, guid: e41d840c5c320774e87b2a039c2e40aa,
+        type: 3}
+      propertyPath: speed
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5484346157061026279, guid: e41d840c5c320774e87b2a039c2e40aa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.74
+      value: 16.55
       objectReference: {fileID: 0}
     - target: {fileID: 5484346157061026279, guid: e41d840c5c320774e87b2a039c2e40aa,
         type: 3}
@@ -1974,6 +1984,11 @@ PrefabInstance:
       propertyPath: safeState
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5366816499833177038, guid: 054d4226b99702942a9aa11255c8e0a2,
+        type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5366816499833177039, guid: 054d4226b99702942a9aa11255c8e0a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2041,7 +2056,7 @@ PrefabInstance:
     - target: {fileID: 8945341584100839097, guid: 86fe66b06f92a4b4887f426b661f51d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.38
+      value: 21.23
       objectReference: {fileID: 0}
     - target: {fileID: 8945341584100839097, guid: 86fe66b06f92a4b4887f426b661f51d2,
         type: 3}

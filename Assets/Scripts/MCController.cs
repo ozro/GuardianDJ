@@ -36,6 +36,7 @@ public class MCController : MonoBehaviour
     float currentTime;
 
     bool jump = false;
+    bool bounce = false;
 
     public void Kill()
     {
@@ -50,6 +51,11 @@ public class MCController : MonoBehaviour
     {
         animator.SetTrigger("Jumped");
         jump = true;
+    }
+    public void Bounce()
+    {
+        animator.SetTrigger("Jumped");
+        bounce = true;
     }
     private void Start()
     {
@@ -94,6 +100,11 @@ public class MCController : MonoBehaviour
         {
             jump = false;
             desiredVel.y = jumpSpeed;
+        }
+        else if (bounce)
+        {
+            bounce = false;
+            desiredVel.y = 0.25f * jumpSpeed;
         }
         animator.SetBool("IsDead", dead);
         animator.SetBool("IsGrounded", controller.isGrounded);
