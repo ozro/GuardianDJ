@@ -8,6 +8,8 @@ public class GooseAttack : MonoBehaviour
     float speed = 5;
     [SerializeField]
     MCController.MovementState safeState = MCController.MovementState.normalWalk;
+    [SerializeField]
+    GameObject deathRattle;
 
     // Update is called once per frame
     void Update()
@@ -25,5 +27,11 @@ public class GooseAttack : MonoBehaviour
                 MC.Kill();
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameObject newObj = Instantiate(deathRattle);
+        newObj.transform.position = transform.position;
     }
 }
