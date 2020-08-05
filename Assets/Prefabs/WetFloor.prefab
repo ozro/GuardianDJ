@@ -130,6 +130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   safeState: 1
+  deathRattle: {fileID: 3977403878258857530, guid: 7fff80a1ff4e86e48885d0ef75497dc2,
+    type: 3}
 --- !u!65 &8945341584100839099
 BoxCollider:
   m_ObjectHideFlags: 0
