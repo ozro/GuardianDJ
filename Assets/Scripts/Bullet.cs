@@ -21,8 +21,16 @@ public class Bullet : MonoBehaviour
     {
         if(other.GetComponent<MCController>() == null)
         {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
+            GooseAttack goose = other.GetComponent<GooseAttack>();
+            if(goose != null)
+            {
+                GameObject newObj = Instantiate(goose.deathRattle);
+                newObj.transform.position = goose.transform.position;
+                newObj.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+                Destroy(newObj, 1);
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

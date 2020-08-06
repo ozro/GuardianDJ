@@ -19,6 +19,9 @@ public class Lightning : MonoBehaviour
         foreach(Collider hit in hitColliders)
         {
             Destroy(hit.gameObject);
+            GameObject newObj = Instantiate(hit.GetComponent<GooseAttack>().deathRattle);
+            newObj.transform.position = hit.transform.position;
+            newObj.transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
         }
     }
 }

@@ -9,12 +9,31 @@ public class GooseAttack : MonoBehaviour
     [SerializeField]
     MCController.MovementState safeState = MCController.MovementState.normalWalk;
     [SerializeField]
-    GameObject deathRattle;
+    public GameObject deathRattle;
+    [SerializeField]
+    Camera mainCam;
+    [SerializeField]
+    float activationDist;
+    bool active = false;
 
+    float actualSpeed;
+
+    private void Start()
+    {
+        actualSpeed = speed + Random.Range(-1f, 1f) * speed * 0.75f;
+        mainCam = Camera.main;
+    }
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.left * speed * Time.deltaTime);
+        if(!active && Mathf.Abs((transform.position-mainCam.transform.position).x) < activationDist)
+        {
+            active = true;
+        }
+        if (active)
+        {
+            transform.Translate(Vector3.left * actualSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +50,5 @@ public class GooseAttack : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameObject newObj = Instantiate(deathRattle);
-        newObj.transform.position = transform.position;
     }
 }

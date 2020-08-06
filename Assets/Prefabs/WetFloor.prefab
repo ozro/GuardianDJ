@@ -132,6 +132,8 @@ MonoBehaviour:
   safeState: 1
   deathRattle: {fileID: 3977403878258857530, guid: 7fff80a1ff4e86e48885d0ef75497dc2,
     type: 3}
+  camera: {fileID: 0}
+  activationDist: 5
 --- !u!65 &8945341584100839099
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -144,7 +146,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.100521, y: 0.56881636, z: 1}
-  m_Center: {x: 2.2399073, y: 0.2800416, z: 0}
+  m_Center: {x: 0.74, y: 0.2800416, z: 0}
 --- !u!1 &8982669616507826200
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +172,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8982669616507826200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.26, y: 0, z: 0}
+  m_LocalPosition: {x: 0.76, y: 0, z: 0}
   m_LocalScale: {x: 15, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8945341584100839097}

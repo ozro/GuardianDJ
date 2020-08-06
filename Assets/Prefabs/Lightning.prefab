@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fc6be5d03093f949a631df6d9655b22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strikeRadius: 1
+  strikeRadius: 3
   layers:
   - Goose
 --- !u!1 &6352602534011882924

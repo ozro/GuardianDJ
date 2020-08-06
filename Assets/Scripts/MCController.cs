@@ -82,7 +82,7 @@ public class MCController : MonoBehaviour
     public void FireStrike()
     {
         GameObject lightning = Instantiate(lightningPrefab);
-        lightning.transform.position = transform.position + Vector3.right * Random.Range(-5f, 5f);
+        lightning.transform.position = transform.position + Vector3.right * Random.Range(-0f, 5f);
     }
     private void Start()
     {
@@ -112,7 +112,7 @@ public class MCController : MonoBehaviour
         }
         else
         {
-            desiredVel.y = -0.05f;
+            desiredVel.y = -0.01f;
         }
         if(dead)
         {
@@ -151,16 +151,15 @@ public class MCController : MonoBehaviour
     }
     void UpdateInputs()
     {
-        //float h = Input.GetAxis("Horizontal");
-        float h = 0;
-        if (Input.GetKey(KeyCode.A))
-        {
-            h = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            h = 1;
-        }
+        float h = 1;
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    h = -1;
+        //}
+        //else if (Input.GetKey(KeyCode.D))
+        //{
+        //    h = 1;
+        //}
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
