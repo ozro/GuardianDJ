@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5366816499833177039}
   - component: {fileID: 5366816499833177038}
   - component: {fileID: 5366816499833177037}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FlyingGoose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4b44adaed7bd1341a36dc181f52285c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
+  safeState: 3
+  deathRattle: {fileID: 3977403878258857530, guid: 7fff80a1ff4e86e48885d0ef75497dc2,
+    type: 3}
 --- !u!65 &5366816499833177037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,7 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5366816500271740664}
   - component: {fileID: 5366816500271740665}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,6 +108,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

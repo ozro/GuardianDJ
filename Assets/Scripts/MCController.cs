@@ -11,7 +11,7 @@ public class MCController : MonoBehaviour
     [SerializeField]
     Canvas gameoverMenu = null;
 
-    public enum MovementState { normalWalk, moonWalk, spinWalk, bounceWalk, crouchWalk}
+    public enum MovementState { normalWalk, moonWalk, spinWalk, bounceWalk, crouchWalk, lightningWalk}
     [SerializeField]
     public MovementState state = MovementState.normalWalk;
 
@@ -35,8 +35,20 @@ public class MCController : MonoBehaviour
     float deathTime = 2f;
     float currentTime;
 
+    //Trigger flags
     bool jump = false;
     bool bounce = false;
+    bool shoot = false;
+
+    [SerializeField]
+    GameObject projectilePrefab;
+    [SerializeField]
+    GameObject lightningPrefab;
+
+    public void SetState(MovementState newState)
+    {
+        state = newState;
+    }
 
     public void Kill()
     {
@@ -57,6 +69,21 @@ public class MCController : MonoBehaviour
         animator.SetTrigger("Jumped");
         bounce = true;
     }
+    public void Shoot()
+    {
+        animator.SetTrigger("Shoot");
+        shoot = true;
+    }
+    public void FireProjectile()
+    {
+        GameObject newProj = Instantiate(projectilePrefab);
+        newProj.transform.position = transform.position;
+    }
+    public void FireStrike()
+    {
+        GameObject lightning = Instantiate(lightningPrefab);
+        lightning.transform.position = transform.position + Vector3.right * Random.Range(-0f, 5f);
+    }
     private void Start()
     {
         controller = GetComponent<CharacterController>(); 
@@ -66,13 +93,6 @@ public class MCController : MonoBehaviour
     }
     private void Update()
     {
-        if (!controller.isGrounded){
-            desiredVel.y -= gravity * Time.deltaTime;
-        }
-        else
-        {
-            desiredVel.y = -0.05f;
-        }
         if (!dead)
         {
             if(transform.position.y < -5)
@@ -84,16 +104,26 @@ public class MCController : MonoBehaviour
                 UpdateInputs();
             }
         }
+    }
+    private void FixedUpdate()
+    {
+        if (!controller.isGrounded){
+            desiredVel.y -= gravity * Time.fixedDeltaTime;
+        }
         else
         {
-            currentTime += Time.deltaTime;
+            desiredVel.y = -0.01f;
+        }
+        if(dead)
+        {
+            currentTime += Time.fixedDeltaTime;
             if(currentTime > deathTime)
             {
                 gameoverMenu.gameObject.SetActive(true);
             }
             if (controller.isGrounded)
             {
-                desiredVel.x *= 0.95f;
+                desiredVel.x *= 0.95f * Time.fixedDeltaTime;
             }
         }
         if (jump)
@@ -106,6 +136,11 @@ public class MCController : MonoBehaviour
             bounce = false;
             desiredVel.y = 0.25f * jumpSpeed;
         }
+        else if (shoot)
+        {
+            shoot = false;
+            desiredVel.x = 0;
+        }
         animator.SetBool("IsDead", dead);
         animator.SetBool("IsGrounded", controller.isGrounded);
         animator.SetBool("FacingRight", controller.velocity.x >= 0);
@@ -116,17 +151,20 @@ public class MCController : MonoBehaviour
     }
     void UpdateInputs()
     {
-        //float h = Input.GetAxis("Horizontal");
-        float h = 0;
-        if (Input.GetKey(KeyCode.A))
-        {
-            h = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            h = 1;
-        }
+        float h = 1;
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    h = -1;
+        //}
+        //else if (Input.GetKey(KeyCode.D))
+        //{
+        //    h = 1;
+        //}
         if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+        if (Input.GetMouseButtonDown(1))
         {
             Kill();
         }
@@ -150,16 +188,20 @@ public class MCController : MonoBehaviour
         {
             state = MovementState.crouchWalk;
         }
+        if (Input.GetKey(KeyCode.Alpha6))
+        {
+            state = MovementState.lightningWalk;
+        }
 
         if(h==0) 
         {
-            if(desiredVel.x > deceleration * Time.deltaTime)
+            if(desiredVel.x > deceleration * Time.fixedDeltaTime)
             {
-                desiredVel.x -= deceleration * Time.deltaTime;
+                desiredVel.x -= deceleration * Time.fixedDeltaTime;
             }
-            else if(desiredVel.x < -deceleration * Time.deltaTime)
+            else if(desiredVel.x < -deceleration * Time.fixedDeltaTime)
             {
-                desiredVel.x += deceleration * Time.deltaTime;
+                desiredVel.x += deceleration * Time.fixedDeltaTime;
             }
             else
             {
@@ -170,20 +212,20 @@ public class MCController : MonoBehaviour
         {
             if(h < 0)
             {
-                desiredVel.x -= deceleration * Time.deltaTime;
+                desiredVel.x -= deceleration * Time.fixedDeltaTime;
             }
             else if(h>0)
             {
-                desiredVel.x += deceleration * Time.deltaTime;
+                desiredVel.x += deceleration * Time.fixedDeltaTime;
             }
         }
         else if(h>0 && desiredVel.x < maxSpeed)
         {
-            desiredVel.x += acceleration * Time.deltaTime;
+            desiredVel.x += acceleration * Time.fixedDeltaTime;
         }
         else if(h<0 && desiredVel.x > -maxSpeed)
         {
-            desiredVel.x -= acceleration * Time.deltaTime;
+            desiredVel.x -= acceleration * Time.fixedDeltaTime;
         }
         desiredVel.x = Mathf.Clamp(desiredVel.x, -maxSpeed, maxSpeed);
         if (controller.isGrounded)
