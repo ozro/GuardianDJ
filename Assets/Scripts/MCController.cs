@@ -17,7 +17,7 @@ public class MCController : MonoBehaviour
     [SerializeField]
     Canvas winMenu = null;
 
-    public enum MovementState { normalWalk, moonWalk, lightningWalk}
+    public enum MovementState { normalWalk, moonWalk, lightningWalk, idleState}
     [SerializeField]
     public MovementState state = MovementState.normalWalk;
 
@@ -97,6 +97,7 @@ public class MCController : MonoBehaviour
         sprite = GetComponentInChildren<SpriteRenderer>();
         gameoverMenu.gameObject.SetActive(false);
         winMenu.gameObject.SetActive(false);
+
     }
     private void Update()
     {
@@ -180,18 +181,18 @@ public class MCController : MonoBehaviour
 			state = MovementState.normalWalk;
 		}
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            h = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            h = 1;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+        //if (Input.GetKey(KeyCode.A))
+        //{
+        //    h = -1;
+        //}
+        //else if (Input.GetKey(KeyCode.D))
+        //{
+        //    h = 1;
+        //}
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Shoot();
+        //}
         //if (Input.GetMouseButtonDown(1))
         //{
         //    Kill();

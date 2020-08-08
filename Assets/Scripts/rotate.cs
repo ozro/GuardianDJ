@@ -7,6 +7,9 @@ public class rotate : MonoBehaviour
 	// camera
 	public Camera recordCam;
 
+    public GameObject hand;
+    public Vector3 handOffset;
+
 	// audio
 	private AudioSource source;
 	private float audioLength = 359.549f;
@@ -26,6 +29,7 @@ public class rotate : MonoBehaviour
 		source.Play();
 		
 		rotationSpeed = audioLength / 360;
+        //Cursor.visible = false;
 	}
 	
 	// void Update() {
@@ -48,7 +52,12 @@ public class rotate : MonoBehaviour
 		if (mouseUp) {
 			rotZ += -Time.deltaTime * rotationSpeed;
 			transform.rotation = Quaternion.Euler(45, 0, rotZ);
+            Time.timeScale = 1;
 		}
+        else
+        {
+            Time.timeScale = 0.2f;
+        }
 		// if we rotate past 360 we reset back towards 0 to keep angles within 360
 		if (rotZ <= -360) {
 			rotZ += 360;
@@ -57,6 +66,8 @@ public class rotate : MonoBehaviour
 		rotZ = -360 + transform.eulerAngles.z;
 		
 		currentAngle = 360 - transform.eulerAngles.z;
+
+        hand.GetComponent<RectTransform>().position = Input.mousePosition + handOffset;
 	}
 
     void OnMouseDown() {
