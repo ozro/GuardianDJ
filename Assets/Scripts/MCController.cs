@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MCController : MonoBehaviour
-{
+{	
+
+	public AudioSource source;
+	public float audioTime;  // for testing
+
     CharacterController controller;
     Animator animator;
     SpriteRenderer sprite;
@@ -159,6 +163,18 @@ public class MCController : MonoBehaviour
     }
     void UpdateInputs()
     {
+		audioTime = source.time;
+		
+		if (49.5 <= audioTime && audioTime <= 50.5 ) {
+			Shoot();
+		} else if (130 <= audioTime && audioTime <= 175) {
+			state = MovementState.moonWalk;
+		} else if (175 <= audioTime && audioTime <= 200) {
+			state = MovementState.lightningWalk;
+		} else {
+			state = MovementState.normalWalk;
+		}
+		
         float h = 1;
         //if (Input.GetKey(KeyCode.A))
         //{
@@ -168,26 +184,26 @@ public class MCController : MonoBehaviour
         //{
         //    h = 1;
         //}
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
-        if (Input.GetMouseButtonDown(1))
-        {
-            Kill();
-        }
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            state = MovementState.normalWalk;
-        }
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            state = MovementState.moonWalk;
-        }
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            state = MovementState.lightningWalk;
-        }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+            // Shoot();
+        // }
+        // if (Input.GetMouseButtonDown(1))
+        // {
+            // Kill();
+        // }
+        // if (Input.GetKey(KeyCode.Alpha1))
+        // {
+            // state = MovementState.normalWalk;
+        // }
+        // if (Input.GetKey(KeyCode.Alpha2))
+        // {
+            // state = MovementState.moonWalk;
+        // }
+        // if (Input.GetKey(KeyCode.Alpha3))
+        // {
+            // state = MovementState.lightningWalk;
+        // }
 
         if(h==0) 
         {
