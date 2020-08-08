@@ -29,7 +29,7 @@ public class rotate : MonoBehaviour
 		source.Play();
 		
 		rotationSpeed = audioLength / 360;
-        //Cursor.visible = false;
+        Cursor.visible = false;
 	}
 	
 	// void Update() {
