@@ -163,9 +163,14 @@ public class MCController : MonoBehaviour
     }
     void UpdateInputs()
     {
+        float h = 1;
 		audioTime = source.time;
-		
-		if (49.5 <= audioTime && audioTime <= 50.5 ) {
+
+        if (64.3 <= audioTime && audioTime <= 66.7)
+        {
+            h = 0;
+        }
+		else if (66.7 <= audioTime && audioTime <= 67.2 ) {
 			Shoot();
 		} else if (130 <= audioTime && audioTime <= 175) {
 			state = MovementState.moonWalk;
@@ -174,38 +179,37 @@ public class MCController : MonoBehaviour
 		} else {
 			state = MovementState.normalWalk;
 		}
-		
-        float h = 1;
-        //if (Input.GetKey(KeyCode.A))
-        //{
-        //    h = -1;
-        //}
-        //else if (Input.GetKey(KeyCode.D))
-        //{
-        //    h = 1;
-        //}
-        // if (Input.GetMouseButtonDown(0))
-        // {
-            // Shoot();
-        // }
-        // if (Input.GetMouseButtonDown(1))
-        // {
-            // Kill();
-        // }
-        // if (Input.GetKey(KeyCode.Alpha1))
-        // {
-            // state = MovementState.normalWalk;
-        // }
-        // if (Input.GetKey(KeyCode.Alpha2))
-        // {
-            // state = MovementState.moonWalk;
-        // }
-        // if (Input.GetKey(KeyCode.Alpha3))
-        // {
-            // state = MovementState.lightningWalk;
-        // }
 
-        if(h==0) 
+        if (Input.GetKey(KeyCode.A))
+        {
+            h = -1;
+        }
+        else if (Input.GetKey(KeyCode.D))
+        {
+            h = 1;
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    Kill();
+        //}
+        if (Input.GetKey(KeyCode.Alpha1))
+        {
+            state = MovementState.normalWalk;
+        }
+        if (Input.GetKey(KeyCode.Alpha2))
+        {
+            state = MovementState.moonWalk;
+        }
+        if (Input.GetKey(KeyCode.Alpha3))
+        {
+            state = MovementState.lightningWalk;
+        }
+
+        if (h==0) 
         {
             if(desiredVel.x > deceleration * Time.fixedDeltaTime)
             {
