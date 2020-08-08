@@ -166,48 +166,51 @@ public class MCController : MonoBehaviour
         float h = 1;
 		audioTime = source.time;
 
-        if (64.3 <= audioTime && audioTime <= 66.7)
+		if (40.684f <= audioTime && audioTime <= 41.354f ) {
+			Shoot();
+		}
+        else if (30f <= audioTime && audioTime < 45f)
         {
             h = 0;
-        }
-		else if (66.7 <= audioTime && audioTime <= 67.2 ) {
-			Shoot();
-		} else if (130 <= audioTime && audioTime <= 175) {
-			state = MovementState.moonWalk;
-		} else if (175 <= audioTime && audioTime <= 200) {
+		} else if (45f <= audioTime && audioTime <= 60f) {
+			h = 1;
 			state = MovementState.lightningWalk;
-		} else {
+		} else if (15f <= audioTime && audioTime < 30f) {
+			h = 1;
+			state = MovementState.moonWalk;
+		} else if (0f <= audioTime && audioTime < 15f) {
+			h = 1;
 			state = MovementState.normalWalk;
 		}
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            h = -1;
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            h = 1;
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
-        }
+        // if (Input.GetKey(KeyCode.A))
+        // {
+            // h = -1;
+        // }
+        // else if (Input.GetKey(KeyCode.D))
+        // {
+            // h = 1;
+        // }
+        // if (Input.GetMouseButtonDown(0))
+        // {
+            // Shoot();
+        // }
         //if (Input.GetMouseButtonDown(1))
         //{
         //    Kill();
         //}
-        if (Input.GetKey(KeyCode.Alpha1))
-        {
-            state = MovementState.normalWalk;
-        }
-        if (Input.GetKey(KeyCode.Alpha2))
-        {
-            state = MovementState.moonWalk;
-        }
-        if (Input.GetKey(KeyCode.Alpha3))
-        {
-            state = MovementState.lightningWalk;
-        }
+        // if (Input.GetKey(KeyCode.Alpha1))
+        // {
+            // state = MovementState.normalWalk;
+        // }
+        // if (Input.GetKey(KeyCode.Alpha2))
+        // {
+            // state = MovementState.moonWalk;
+        // }
+        // if (Input.GetKey(KeyCode.Alpha3))
+        // {
+            // state = MovementState.lightningWalk;
+        // }
 
         if (h==0) 
         {

@@ -9,7 +9,7 @@ public class rotate : MonoBehaviour
 
 	// audio
 	private AudioSource source;
-	private float audioLength = 359.549f;
+	private float audioLength = 60.0f;
 	
 	// auto rotation
 	public float rotZ;
@@ -18,30 +18,17 @@ public class rotate : MonoBehaviour
 	
 	// mouse drag rotation
 	private float baseAngle = 0.0f;
-	
 	public float currentAngle = 0.0f;
+	
+	// offeset to align with head
+	public float offset;
 	
 	void Start() {
 		source = GetComponent<AudioSource>();
 		source.Play();
 		
-		rotationSpeed = audioLength / 360;
+		rotationSpeed = 360 / audioLength;
 	}
-	
-	// void Update() {
-	// continue to rotate as long as mouse isn't clicked on object
-	// if (mouseUp) {
-		// rotZ = Time.deltaTime * rotationSpeed;
-		// transform.Rotate(0, 0, -rotZ, Space.Self);
-		// Quaternion previous = transform.rotation;
-		// transform.rotation = Quaternion.AngleAxis(rotZ, rotAxis) * previous;
-	// }
-	
-	// currentAngle = 360 - transform.eulerAngles.z;
-	
-	// grab the new rotation (if mouse rotated it)
-	// rotZ = currentAngle;
-	// }
 
 	void Update() {
 		// continue to rotate as long as mouse isn't clicked on object
@@ -64,7 +51,7 @@ public class rotate : MonoBehaviour
 		Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
 		pos = Input.mousePosition - pos;
 		baseAngle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
-		baseAngle -= Mathf.Atan2(transform.right.y, transform.right.x) *Mathf.Rad2Deg;
+		baseAngle -= Mathf.Atan2(transform.right.y, transform.right.x) * Mathf.Rad2Deg;
 		
 		source.Pause();
     }
