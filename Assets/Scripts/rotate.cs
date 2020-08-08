@@ -38,7 +38,12 @@ public class rotate : MonoBehaviour
 		if (mouseUp) {
 			rotZ += -Time.deltaTime * rotationSpeed;
 			transform.rotation = Quaternion.Euler(45, 0, rotZ);
+            Time.timeScale = 1f;
 		}
+        else
+        {
+            Time.timeScale = 0.2f;
+        }
 		// if we rotate past 360 we reset back towards 0 to keep angles within 360
 		if (rotZ <= -360) {
 			rotZ += 360;

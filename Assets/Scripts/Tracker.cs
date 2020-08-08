@@ -62,6 +62,7 @@ public class Tracker : MonoBehaviour
             offset.y = 0;
         }
         Vector3 pos = transform.position + offset;
+        pos.x = Mathf.Min(pos.x, 230);
         pos.z = separation;
         transform.position = pos;
     }

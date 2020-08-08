@@ -46,12 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  safeState: 1
+  safeState: 0
   deathRattle: {fileID: 3977403878258857530, guid: 7fff80a1ff4e86e48885d0ef75497dc2,
     type: 3}
   mainCam: {fileID: 0}
   activationDist: 5
-  dangerState: 1
+  dangerState: 0
+  immuneToLightning: 0
 --- !u!65 &4377095275282403105
 BoxCollider:
   m_ObjectHideFlags: 0

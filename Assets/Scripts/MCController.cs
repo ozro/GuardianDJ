@@ -114,10 +114,9 @@ public class MCController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(transform.position.x > 250)
+        if(transform.position.x > 230)
         {
             winMenu.gameObject.SetActive(true);
-            return;
         }
         if (!controller.isGrounded){
             desiredVel.y -= gravity * Time.fixedDeltaTime;
