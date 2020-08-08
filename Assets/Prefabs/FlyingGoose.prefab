@@ -49,6 +49,10 @@ MonoBehaviour:
   safeState: 3
   deathRattle: {fileID: 3977403878258857530, guid: 7fff80a1ff4e86e48885d0ef75497dc2,
     type: 3}
+  mainCam: {fileID: 0}
+  activationDist: 0
+  dangerState: 0
+  immuneToLightning: 0
 --- !u!65 &5366816499833177037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60,7 +64,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.4, z: 1}
+  m_Size: {x: 0.6, y: 0.4, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5366816500271740671
 GameObject:
@@ -88,7 +92,7 @@ Transform:
   m_GameObject: {fileID: 5366816500271740671}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children: []
   m_Father: {fileID: 5366816499833177039}
   m_RootOrder: 0
@@ -133,7 +137,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28ac92be3179e2245b7226201f157616, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce011a2f6541bc0459d21cba888fad53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
