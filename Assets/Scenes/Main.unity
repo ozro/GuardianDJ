@@ -8733,6 +8733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b319d93a8a4fcea4595c18b772bba320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  recordCam: {fileID: 1439369123}
   rotationSpeed: 0
   currentAngle: 0
 --- !u!212 &1091742184

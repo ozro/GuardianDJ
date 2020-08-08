@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class rotate : MonoBehaviour
 {	
+
+	// camera
+	public Camera recordCam;
+
 	// audio
 	private AudioSource source;
 	private float audioLength = 359.549f;
@@ -43,7 +47,7 @@ public class rotate : MonoBehaviour
 
     void OnMouseDown() {
 		mouseUp = false;
-		Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+		Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
 		pos = Input.mousePosition - pos;
 		baseAngle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
 		baseAngle -= Mathf.Atan2(transform.right.y, transform.right.x) *Mathf.Rad2Deg;
@@ -52,7 +56,7 @@ public class rotate : MonoBehaviour
     }
 
     void OnMouseDrag() {
-        Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
         pos = Input.mousePosition - pos;
         float angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg - baseAngle;
 		transform.rotation = Quaternion.Euler(0, 0, angle);
