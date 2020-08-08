@@ -14206,7 +14206,7 @@ MonoBehaviour:
   gameoverMenu: {fileID: 831179008}
   winMenu: {fileID: 403130960}
   state: 0
-  maxSpeed: 0.1
+  maxSpeed: 0.04
   acceleration: 0.3
   deceleration: 1
   jumpSpeed: 0.4
