@@ -7,9 +7,13 @@ public class rotate : MonoBehaviour
 	// camera
 	public Camera recordCam;
 
-	// audio
-	private AudioSource source;
-	private float audioLength = 60.0f;
+	// backing track
+	private AudioSource backingTrack;
+	private float backingTrackLength = 60.0f;
+	
+	// sound effects
+	public AudioSource slowMotionEffect;
+	public AudioSource scratchEffect;
 	
 	// auto rotation
 	public float rotZ;
@@ -24,10 +28,11 @@ public class rotate : MonoBehaviour
 	public float offset;
 	
 	void Start() {
-		source = GetComponent<AudioSource>();
-		source.Play();
+		backingTrack = GetComponent<AudioSource>();
+		slowMotionEffect = GetComponent<AudioSource>();
+		backingTrack.Play();
 		
-		rotationSpeed = 360 / audioLength;
+		rotationSpeed = 360 / backingTrackLength;
 	}
 
 	void Update() {
@@ -47,13 +52,16 @@ public class rotate : MonoBehaviour
 	}
 
     void OnMouseDown() {
+		
 		mouseUp = false;
 		Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
 		pos = Input.mousePosition - pos;
 		baseAngle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
 		baseAngle -= Mathf.Atan2(transform.right.y, transform.right.x) * Mathf.Rad2Deg;
 		
-		source.Pause();
+		backingTrack.Pause();
+
+		slowMotionEffect.Play();
     }
 
     void OnMouseDrag() {
@@ -67,8 +75,8 @@ public class rotate : MonoBehaviour
 		mouseUp = true;
 		
 		// calc new audio position
-		source.time = ((360 - transform.eulerAngles.z) / 360) * audioLength;
+		backingTrack.time = ((360 - transform.eulerAngles.z) / 360) * backingTrackLength;
 		
-		source.Play();
+		backingTrack.Play();
 	}
 }
