@@ -8,9 +8,13 @@ public class rotate : MonoBehaviour
 	public Camera recordCam;
 	public GameObject cursor;
 
-	// audio
-	private AudioSource source;
-	private float audioLength = 60.0f;
+	// backing track
+	private AudioSource backingTrack;
+	private float backingTrackLength = 60.0f;
+	
+	// sound effects
+	public AudioSource slowMotionEffect;
+	public AudioSource scratchEffect;
 	
 	// auto rotation
 	public float rotZ;
@@ -25,10 +29,10 @@ public class rotate : MonoBehaviour
 	public float offset;
 	
 	void Start() {
-		source = GetComponent<AudioSource>();
-		source.Play();
+		backingTrack = GetComponent<AudioSource>();
+		backingTrack.Play();
 		
-		rotationSpeed = 360 / audioLength;
+		rotationSpeed = 360 / backingTrackLength;
 
         Cursor.visible = false;
 	}
@@ -38,6 +42,8 @@ public class rotate : MonoBehaviour
 		if (mouseUp) {
 			rotZ += -Time.deltaTime * rotationSpeed;
 			transform.rotation = Quaternion.Euler(45, 0, rotZ);
+		} else {
+			scratchEffect.Play();
 		}
 		// if we rotate past 360 we reset back towards 0 to keep angles within 360
 		if (rotZ <= -360) {
@@ -52,16 +58,19 @@ public class rotate : MonoBehaviour
 	}
 
     void OnMouseDown() {
-		mouseUp = false;
+		backingTrack.Pause();
+		slowMotionEffect.Play();
+		
 		Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
 		pos = Input.mousePosition - pos;
 		baseAngle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg;
 		baseAngle -= Mathf.Atan2(transform.right.y, transform.right.x) * Mathf.Rad2Deg;
 		
-		source.Pause();
+		mouseUp = false;
     }
 
     void OnMouseDrag() {
+	
         Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
         pos = Input.mousePosition - pos;
         float angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg - baseAngle;
@@ -72,8 +81,8 @@ public class rotate : MonoBehaviour
 		mouseUp = true;
 		
 		// calc new audio position
-		source.time = ((360 - transform.eulerAngles.z) / 360) * audioLength;
+		backingTrack.time = ((360 - transform.eulerAngles.z) / 360) * backingTrackLength;
 		
-		source.Play();
+		backingTrack.Play();
 	}
 }
