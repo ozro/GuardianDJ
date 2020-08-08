@@ -8,7 +8,7 @@ public class SetCursor : MonoBehaviour
 	
     void Start()
     {
-        Vector2 cursorOffset = new Vector2(hand.width * 0.5f, hand.height * 0.5f);
+        Vector2 cursorOffset = new Vector2(hand.width * 0.35f, hand.height * 0.35f);
 		Cursor.SetCursor(hand, cursorOffset, CursorMode.ForceSoftware);
     }
 }
