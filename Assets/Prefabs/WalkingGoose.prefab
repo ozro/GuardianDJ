@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5484346157061026279}
   - component: {fileID: 5484346157061026278}
   - component: {fileID: 5484346157061026277}
+  - component: {fileID: -2103578290419069323}
   m_Layer: 8
   m_Name: WalkingGoose
   m_TagString: Untagged
@@ -49,6 +50,9 @@ MonoBehaviour:
   safeState: 2
   deathRattle: {fileID: 3977403878258857530, guid: 7fff80a1ff4e86e48885d0ef75497dc2,
     type: 3}
+  mainCam: {fileID: 0}
+  activationDist: 0
+  dangerState: 0
 --- !u!65 &5484346157061026277
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -62,6 +66,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6, y: 0.7, z: 1}
   m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!95 &-2103578290419069323
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484346157061026276}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a2101f4f85aa574a823443dbcbf6a30, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &5484346157562021079
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +156,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0421ed444ebc5f447ba2426b1b83ba01, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ac266b3064bf7554796105d2239c8ed2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
