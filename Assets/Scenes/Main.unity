@@ -3660,13 +3660,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 908fbcc9eb5db364ca83b97b961e3717, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.767
+  m_Volume: 0.208
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -4462,13 +4462,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8d78532289d14304b9b9cc33f45f9e58, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.682
+  m_Volume: 0.176
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -17838,6 +17838,16 @@ PrefabInstance:
       propertyPath: m_audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 3eeb765dccc39fc4aacd169854128a93, type: 3}
+    - target: {fileID: 7622145542295953027, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
+        type: 3}
+      propertyPath: Priority
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622145542295953027, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.859
+      objectReference: {fileID: 0}
     - target: {fileID: 7622145542295953036, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
         type: 3}
       propertyPath: m_LocalPosition.x
