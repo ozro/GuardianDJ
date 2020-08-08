@@ -7675,7 +7675,7 @@ PrefabInstance:
     - target: {fileID: 7259242012492814663, guid: 9fec6c2ebb4c5df45a8342dbe5222d77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7259242012492814663, guid: 9fec6c2ebb4c5df45a8342dbe5222d77,
         type: 3}
@@ -13550,9 +13550,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.05
+    x: 0.01
     y: 0.508
-    width: 0.65
+    width: 0.71
     height: 0.46
   near clip plane: 0.3
   far clip plane: 1000
@@ -13962,10 +13962,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 2
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1280, y: 720}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
