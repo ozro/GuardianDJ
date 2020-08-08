@@ -42,8 +42,6 @@ public class rotate : MonoBehaviour
 		if (mouseUp) {
 			rotZ += -Time.deltaTime * rotationSpeed;
 			transform.rotation = Quaternion.Euler(45, 0, rotZ);
-		} else {
-			scratchEffect.Play();
 		}
 		// if we rotate past 360 we reset back towards 0 to keep angles within 360
 		if (rotZ <= -360) {
@@ -60,6 +58,7 @@ public class rotate : MonoBehaviour
     void OnMouseDown() {
 		backingTrack.Pause();
 		slowMotionEffect.Play();
+		scratchEffect.Play();
 		
 		Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
 		pos = Input.mousePosition - pos;
@@ -78,6 +77,8 @@ public class rotate : MonoBehaviour
     }
 	
 	void OnMouseUp() {
+		slowMotionEffect.Stop();
+		scratchEffect.Stop();
 		mouseUp = true;
 		
 		// calc new audio position
