@@ -13,7 +13,7 @@ public class MCController : MonoBehaviour
     [SerializeField]
     Canvas winMenu = null;
 
-    public enum MovementState { normalWalk, moonWalk, spinWalk, bounceWalk, crouchWalk, lightningWalk}
+    public enum MovementState { normalWalk, moonWalk, lightningWalk}
     [SerializeField]
     public MovementState state = MovementState.normalWalk;
 
@@ -152,7 +152,7 @@ public class MCController : MonoBehaviour
         animator.SetBool("IsDead", dead);
         animator.SetBool("IsGrounded", controller.isGrounded);
         animator.SetBool("FacingRight", controller.velocity.x >= 0);
-        animator.SetFloat("State", (float)state);
+        animator.SetInteger("State", (int)state);
         animator.SetFloat("SpeedH", Mathf.Abs(desiredVel.x));
         controller.Move(desiredVel);
         animator.SetFloat("VelocityV", controller.velocity.y);
@@ -185,18 +185,6 @@ public class MCController : MonoBehaviour
             state = MovementState.moonWalk;
         }
         if (Input.GetKey(KeyCode.Alpha3))
-        {
-            state = MovementState.spinWalk;
-        }
-        if (Input.GetKey(KeyCode.Alpha4))
-        {
-            state = MovementState.bounceWalk;
-        }
-        if (Input.GetKey(KeyCode.Alpha5))
-        {
-            state = MovementState.crouchWalk;
-        }
-        if (Input.GetKey(KeyCode.Alpha6))
         {
             state = MovementState.lightningWalk;
         }
