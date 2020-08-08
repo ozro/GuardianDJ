@@ -4306,12 +4306,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41d840c5c320774e87b2a039c2e40aa, type: 3}
---- !u!1 &609163963 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7259242012492814664, guid: 9fec6c2ebb4c5df45a8342dbe5222d77,
-    type: 3}
-  m_PrefabInstance: {fileID: 986341753}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &609163964 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7259242012492814663, guid: 9fec6c2ebb4c5df45a8342dbe5222d77,
@@ -7770,6 +7764,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fec6c2ebb4c5df45a8342dbe5222d77, type: 3}
+--- !u!1 &986341754 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7259242012492814664, guid: 9fec6c2ebb4c5df45a8342dbe5222d77,
+    type: 3}
+  m_PrefabInstance: {fileID: 986341753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1001203359 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5484346157061026279, guid: e41d840c5c320774e87b2a039c2e40aa,
@@ -17543,12 +17543,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameObject
       objectReference: {fileID: 0}
-    - target: {fileID: 5740354516269277763, guid: b063af954126c1b46913a5c6588df8ae,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ddd5e495b30702f46998d6f393a7ff99,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b063af954126c1b46913a5c6588df8ae, type: 3}
 --- !u!1001 &7622145543387625317
@@ -17570,19 +17564,14 @@ PrefabInstance:
       objectReference: {fileID: 1439369123}
     - target: {fileID: 7622145542295953026, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
         type: 3}
-      propertyPath: hand
+      propertyPath: cursor
       value: 
-      objectReference: {fileID: 609163963}
-    - target: {fileID: 7622145542295953026, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
+      objectReference: {fileID: 986341754}
+    - target: {fileID: 7622145542295953027, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
         type: 3}
-      propertyPath: handOffset.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7622145542295953026, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
-        type: 3}
-      propertyPath: handOffset.y
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3eeb765dccc39fc4aacd169854128a93, type: 3}
     - target: {fileID: 7622145542295953036, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
         type: 3}
       propertyPath: m_LocalPosition.x

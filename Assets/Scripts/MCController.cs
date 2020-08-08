@@ -13,9 +13,9 @@ public class MCController : MonoBehaviour
     SpriteRenderer sprite;
 
     [SerializeField]
-    Canvas gameoverMenu = null;
+    GameObject gameoverMenu = null;
     [SerializeField]
-    Canvas winMenu = null;
+    GameObject winMenu = null;
 
     public enum MovementState { normalWalk, moonWalk, lightningWalk}
     [SerializeField]

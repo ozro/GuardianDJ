@@ -6,6 +6,7 @@ public class rotate : MonoBehaviour
 {	
 	// camera
 	public Camera recordCam;
+	public GameObject cursor;
 
 	// audio
 	private AudioSource source;
@@ -28,6 +29,8 @@ public class rotate : MonoBehaviour
 		source.Play();
 		
 		rotationSpeed = 360 / audioLength;
+
+        Cursor.visible = false;
 	}
 
 	void Update() {
@@ -44,6 +47,8 @@ public class rotate : MonoBehaviour
 		rotZ = -360 + transform.eulerAngles.z;
 		
 		currentAngle = 360 - transform.eulerAngles.z;
+
+        cursor.GetComponent<RectTransform>().position = Input.mousePosition;
 	}
 
     void OnMouseDown() {

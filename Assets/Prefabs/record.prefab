@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7622145542295953025}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
   m_LocalPosition: {x: -0.631, y: -20.974, z: -1.62}
-  m_LocalScale: {x: 0.047236513, y: 0.047236513, z: 0.047236513}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.047236513}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: fa4818444b18208438c6d5b539a45a1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89d84f4c28a05674fbe15514ae6a0807, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -98,11 +98,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recordCam: {fileID: 0}
-  hand: {fileID: 0}
-  handOffset: {x: 70, y: -70, z: 0}
   rotZ: 0
   rotationSpeed: 0
   currentAngle: 0
+  offset: 0
 --- !u!82 &7622145542295953027
 AudioSource:
   m_ObjectHideFlags: 0

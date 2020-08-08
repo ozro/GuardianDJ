@@ -687,6 +687,11 @@ PrefabInstance:
       propertyPath: handOffset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7622145542295953026, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
+        type: 3}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 1579612358}
     - target: {fileID: 7622145542295953027, guid: d57fa3d2ae2aab845ad5b8da054f4f6a,
         type: 3}
       propertyPath: m_audioClip
