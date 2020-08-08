@@ -25,7 +25,10 @@ public class Tracker : MonoBehaviour
 
     private void Start()
     {
-        separation = transform.position.z;
+		separation = transform.position.z;
+		Rect camRect = Camera.main.rect;
+		camRect.yMin = 0.4f; // 60% of viewport
+		Camera.main.rect = camRect;
     }
 
     private void OnDrawGizmos()

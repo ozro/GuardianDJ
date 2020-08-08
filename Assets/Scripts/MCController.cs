@@ -10,6 +10,8 @@ public class MCController : MonoBehaviour
 
     [SerializeField]
     Canvas gameoverMenu = null;
+    [SerializeField]
+    Canvas winMenu = null;
 
     public enum MovementState { normalWalk, moonWalk, spinWalk, bounceWalk, crouchWalk, lightningWalk}
     [SerializeField]
@@ -90,6 +92,7 @@ public class MCController : MonoBehaviour
         animator = GetComponent<Animator>(); 
         sprite = GetComponentInChildren<SpriteRenderer>();
         gameoverMenu.gameObject.SetActive(false);
+        winMenu.gameObject.SetActive(false);
     }
     private void Update()
     {
@@ -107,6 +110,11 @@ public class MCController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if(transform.position.x > 250)
+        {
+            winMenu.gameObject.SetActive(true);
+            return;
+        }
         if (!controller.isGrounded){
             desiredVel.y -= gravity * Time.fixedDeltaTime;
         }

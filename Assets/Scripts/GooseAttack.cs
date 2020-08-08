@@ -16,6 +16,9 @@ public class GooseAttack : MonoBehaviour
     float activationDist;
     bool active = false;
 
+    [SerializeField]
+    bool dangerState = false;
+
     float actualSpeed;
 
     private void Start()
@@ -41,7 +44,11 @@ public class GooseAttack : MonoBehaviour
         MCController MC = other.GetComponent<MCController>();
         if(MC != null)
         {
-            if(MC.state != safeState)
+            if(!dangerState && MC.state != safeState)
+            {
+                MC.Kill();
+            }
+            else if(dangerState && MC.state == safeState)
             {
                 MC.Kill();
             }
