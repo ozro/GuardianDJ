@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class rotate : MonoBehaviour
 {	
-
 	// camera
 	public Camera recordCam;
 
@@ -13,7 +12,7 @@ public class rotate : MonoBehaviour
 	private float audioLength = 359.549f;
 	
 	// auto rotation
-	private float rotZ;
+	public float rotZ;
 	public float rotationSpeed;
 	private bool mouseUp = true;
 	
@@ -28,12 +27,27 @@ public class rotate : MonoBehaviour
 		
 		rotationSpeed = audioLength / 360;
 	}
+	
+	// void Update() {
+	// continue to rotate as long as mouse isn't clicked on object
+	// if (mouseUp) {
+		// rotZ = Time.deltaTime * rotationSpeed;
+		// transform.Rotate(0, 0, -rotZ, Space.Self);
+		// Quaternion previous = transform.rotation;
+		// transform.rotation = Quaternion.AngleAxis(rotZ, rotAxis) * previous;
+	// }
+	
+	// currentAngle = 360 - transform.eulerAngles.z;
+	
+	// grab the new rotation (if mouse rotated it)
+	// rotZ = currentAngle;
+	// }
 
 	void Update() {
 		// continue to rotate as long as mouse isn't clicked on object
 		if (mouseUp) {
 			rotZ += -Time.deltaTime * rotationSpeed;
-			transform.rotation = Quaternion.Euler(0, 0, rotZ);
+			transform.rotation = Quaternion.Euler(45, 0, rotZ);
 		}
 		// if we rotate past 360 we reset back towards 0 to keep angles within 360
 		if (rotZ <= -360) {
@@ -59,7 +73,7 @@ public class rotate : MonoBehaviour
         Vector3 pos = recordCam.WorldToScreenPoint(transform.position);
         pos = Input.mousePosition - pos;
         float angle = Mathf.Atan2(pos.y, pos.x) * Mathf.Rad2Deg - baseAngle;
-		transform.rotation = Quaternion.Euler(0, 0, angle);
+		transform.rotation = Quaternion.Euler(45, 0, angle);
     }
 	
 	void OnMouseUp() {
