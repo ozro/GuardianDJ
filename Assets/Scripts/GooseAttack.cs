@@ -19,6 +19,8 @@ public class GooseAttack : MonoBehaviour
     [SerializeField]
     bool dangerState = false;
 
+    public bool immuneToLightning = false;
+
     float actualSpeed;
 
     private void Start()
